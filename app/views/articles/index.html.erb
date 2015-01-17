@@ -1,35 +1,19 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Articles</h1>
+  <section id="faqs" class="container">
+  <h1>Listing Articles</h1>
+   <% @articles.each do |article| %>
+        <ul class="faq unstyled">
+            <li>
+                <span class="number">image</span>
+                <div>
+                    <h4><%= article.title %></h4>
+                    <p><%= truncate(article.description, :length => 15)%></p>
+                </div>
+               
+            </li>
 
-<table>
-  <thead>
-    <tr>
-    <% @articles.each do |article| %>
-      <th>Title</th><td><%= article.title %></td>
-      <td></td>
-      </tr>
-
-      <tr>
-      <th>Description</th><td><%= article.description %></td>
-      
-      
-      <td></td>
-    </tr>
-    <tr>
-      <th></th>
-      <th ><%= link_to 'View details', article %></th>
-      </tr>
-  </thead>
-
+      </ul>
+   <% end %>
+ <div><h3><%= link_to 'New Article', new_article_path %></h3></div>
+    </section>
   
-     
-     
-     
-    <% end %>
-  
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
