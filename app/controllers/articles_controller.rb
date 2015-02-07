@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+    before_filter :authenticate, :except => [ :index, :show ]
+  
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
@@ -76,4 +78,10 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :description)
     end
+     private
+  def authenticate
+    authenticate_or_request_with_http_basic do |name, password|
+      name == "admin" && password == "secret"
+    end
+  end
 end

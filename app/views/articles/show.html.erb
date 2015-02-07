@@ -8,5 +8,24 @@
   <%= @article.description %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<u><h5>|<%= link_to 'Edit Article', edit_article_path(@article) %> |</h5></u>
+<h2>Comments</h2>
+ <div id="comments">
+         <%= render :partial => @article.comments %>
+ </div>
+ 
+
+<h4>Comments</h4>
+<div id="comments"></div>
+
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <div class="field">
+ 
+  <div class="field">
+    <%= f.label :body, "New comment" %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add comment" %> <Button><%= link_to 'Back', articles_path %>
+  </div>
+<% end %>
