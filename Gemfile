@@ -51,4 +51,6 @@ end
 
 gem 'heroku'
 
+ruby '2.1.5'
+
 
